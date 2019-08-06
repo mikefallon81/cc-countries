@@ -1,11 +1,17 @@
 #app {
-  padding: 25px 50px;
+  padding: 25px 150px;
   margin: auto;
 }
 
-
 #country-info {
   width: 750px;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .flag {

@@ -15,16 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     computed: {
       totalPopulation() {
-        return this.countries.reduce((s, c) => s + c.population, 0);
+        return this.countries.reduce((s, c) => s + c.population, 0).toLocaleString();
       },
       selectedCountry() {
         return this.countries[this.selectedCountryIndex];
+      },
+      selectedPopulation() {
+        return this.selectedCountry.population.toLocaleString();
       },
       neighbours() {
         return this.selectedCountry.borders.map(c => this.findCountryNameByCode(c));
       },
       neighboursPopulation() {
-        return this.neighbours.reduce((s, c) => s + c.population, 0);
+        return this.neighbours.reduce((s, c) => s + c.population, 0).toLocaleString();
       }
     },
     methods: {
@@ -32,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return this.countries.find(c => c.alpha3Code === code);
       },
       addFavourite() {
-        this.favouriteCountries.push(this.selectedCountry.name);
+        if (!this.favouriteCountries.includes(this.selectedCountry.name)) {
+          this.favouriteCountries.push(this.selectedCountry.name);
+        }
       }
     }
   });
