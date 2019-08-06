@@ -12,16 +12,37 @@
         <h1>Countries</h1>
         <h2>Total Population: {{ totalPopulation }}</h2>
 
+        <div v-if="favouriteCountries.length">
+          <h3>Favourite Countries</h3>
+          <ul >
+            <li v-for="name in favouriteCountries">
+              {{ name }}
+            </li>
+          </ul>
+        </div>
 
-        <select v-model="selectedCountryIndex" id="country-select">
-          <option v-for="(country, index) in countries" v-bind:value="index" v>
-          {{ country.name }}
-          </option>
-        </select>
+        <form v-on:submit.prevent="addFavourite">
+          <select v-model="selectedCountryIndex" id="country-select">
+            <option v-for="(country, index) in countries" v-bind:value="index" v>
+            {{ country.name }}
+            </option>
+          </select>
+          <input type="submit" value="Add Favourite">
+        </form>
 
-        <div v-if="selectedCountry" id="countryInfo">
+        <div v-if="selectedCountry" id="country-info">
           <h3>{{ selectedCountry.name }}</h3>
-          <img v-bind:src="selectedCountry.flag" alt="flag">
+          <img class="flag" v-bind:src="selectedCountry.flag" alt="flag">
+
+          <div>
+            <h3>Neighbours</h3>
+            <ul>
+              <li v-for="neighbour in neighbours">
+                {{ neighbour }}
+              </li>
+            </ul>
+          </div>
+
         </div>
 
       </div>

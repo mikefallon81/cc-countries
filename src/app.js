@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       countries: [],
+      favouriteCountries: [],
       selectedCountryIndex: null
     },
     mounted() {
@@ -18,11 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       selectedCountry() {
         return this.countries[this.selectedCountryIndex];
+      },
+      neighbours() {
+        return this.selectedCountry.borders;
       }
     },
     methods: {
-      displayCountryInfo(index) {
-        
+      addFavourite() {
+        this.favouriteCountries.push(this.selectedCountry.name);
       }
     }
   });
