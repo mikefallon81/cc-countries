@@ -21,10 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return this.countries[this.selectedCountryIndex];
       },
       neighbours() {
-        return this.selectedCountry.borders;
+        return this.selectedCountry.borders.map(c => this.findCountryNameByCode(c));
       }
     },
     methods: {
+      findCountryNameByCode(code) {
+        return this.countries.find(c => c.alpha3Code === code).name;
+      },
       addFavourite() {
         this.favouriteCountries.push(this.selectedCountry.name);
       }
