@@ -13,13 +13,16 @@
         <h2>Total Population: {{ totalPopulation }}</h2>
 
 
-        <div id="countryInfo"></div>
-
         <select v-model="selectedCountryIndex" id="country-select">
           <option v-for="(country, index) in countries" v-bind:value="index" v>
           {{ country.name }}
           </option>
         </select>
+
+        <div v-if="selectedCountry" id="countryInfo">
+          <h3>{{ selectedCountry.name }}</h3>
+          <img v-bind:src="selectedCountry.flag" alt="flag">
+        </div>
 
       </div>
     </div>
