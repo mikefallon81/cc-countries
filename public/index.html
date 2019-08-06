@@ -23,7 +23,7 @@
 
         <form v-on:submit.prevent="addFavourite">
           <select v-model="selectedCountryIndex" id="country-select">
-            <option v-for="(country, index) in countries" v-bind:value="index" v>
+            <option v-for="(country, index) in countries" v-bind:value="index">
             {{ country.name }}
             </option>
           </select>
@@ -38,9 +38,10 @@
             <h3>Neighbours</h3>
             <ul>
               <li v-for="neighbour in neighbours">
-                {{ neighbour }}
+                {{ neighbour.name }}
               </li>
             </ul>
+            <h4>Population of Neighbours: {{ neighboursPopulation }} </h4>
           </div>
 
         </div>

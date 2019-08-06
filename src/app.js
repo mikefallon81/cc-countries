@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       neighbours() {
         return this.selectedCountry.borders.map(c => this.findCountryNameByCode(c));
+      },
+      neighboursPopulation() {
+        return this.neighbours.reduce((s, c) => s + c.population, 0);
       }
     },
     methods: {
       findCountryNameByCode(code) {
-        return this.countries.find(c => c.alpha3Code === code).name;
+        return this.countries.find(c => c.alpha3Code === code);
       },
       addFavourite() {
         this.favouriteCountries.push(this.selectedCountry.name);
