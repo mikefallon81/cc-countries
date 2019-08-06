@@ -1,3 +1,10 @@
+import Vue from 'vue';
+
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('loaded');
+  new Vue({
+    el: '#app',
+    data: { message: 'hello' },
+    computed: {},
+    methods: {}
+  });
 });
