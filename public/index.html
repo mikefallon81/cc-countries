@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Countries</title>
-  <script src="js/bundle.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <div id="app">
-    <div v-if="countries">
-    {{ countries }}
+  <head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+    <script src="js/bundle.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="countries">
+        <h1>Countries</h1>
+        <h2>Total Population: {{ totalPopulation }}</h2>
+
+
+        <div id="countryInfo"></div>
+
+        <select v-model="selectedCountryIndex" id="country-select">
+          <option v-for="(country, index) in countries" v-bind:value="index" v>
+          {{ country.name }}
+          </option>
+        </select>
+
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
